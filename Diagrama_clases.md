@@ -14,10 +14,10 @@ classDiagram
     }
 
     class Usuario {
+        - id : Integer
         - nombre : String
         - apellido : String
         - email : String
-        - id : Integer
         + pidePrestadoLibro(libro : Libro) : Boolean
         + pideDevolverLibro(libro : Libro) : Boolean
         + verHistorialPrestamos() : List~Prestamo~prestamos
@@ -44,6 +44,7 @@ classDiagram
         + registrarPrestamo(usuario : Usuario, libro : Libro)
         + registrarDevolucion(prestamo : Prestamo)
         + notificarMultas(usuario : Usuario)
+        + notificarDisponibilidad(libro : Libro)
         + verLibrosDisponibles(categoria : Categoria) : List~Libro~librosDisponibles
         + verHistorialPrestamos(usuario : Usuario) : List~Prestamo~prestamos
         + generarReporte() : List~Prestamo~prestamos
