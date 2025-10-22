@@ -22,6 +22,10 @@ class LibroSujeto:
     def eliminar_observador(self, observador: Observador):
         if observador in self.observadores:
             self.observadores.remove(observador)
+            print(f"Observador eliminado: {observador.nombre_usuario}")
+        else:
+            print(f"El observador {observador.nombre_usuario} no estaba suscrito.")
+
     
     def notificar_observadores(self):
         estado_str = "disponible" if self.estado else "prestado"
@@ -47,14 +51,11 @@ class PerfilUsuario(Observador):
 
 # Pruebas
 if __name__ == "__main__":
-    # Creacion de un libro (sujeto)
-    libro1 = LibroSujeto("La Felicidad")
-    
-    # Creamos un observador, que es un usuario que espera el libro
-    usuario1 = PerfilUsuario("Ana García")  
-    
-    # Al libro se le agrega el observador
-    libro1.agregar_observador(usuario1)
-    
-    # Trato de cambiar el estado del libro para ver la notificación
-    libro1.cambiar_estado()  # Esto notificará al observador
+    libro= LibroSujeto("El Principito")
+    usuario1 = PerfilUsuario("Lucía")
+    usuario2 = PerfilUsuario("Carlos")
+    libro.agregar_observador(usuario1)
+    libro.agregar_observador(usuario2)
+    libro.cambiar_estado()  # prestado
+    libro.cambiar_estado()  # disponible → notifica a ambos
+    libro.eliminar_observador(usuario1)
