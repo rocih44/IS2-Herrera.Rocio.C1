@@ -1,4 +1,3 @@
-from dominio.Prestamo import Prestamo
 from typing import List
 
 class Usuario:
@@ -11,39 +10,31 @@ class Usuario:
         self.apellido = apellido
         self.email = email
         self.es_socio = es_socio
-        self.historial_prestamos: List[Prestamo] = []
+        self.historial_prestamos: List = []
 
     def registrar_socio(self) -> bool:
         self.es_socio = True
-        print(f"✅ {self.nombre} ahora es socio de la biblioteca.")
+        print(f" {self.nombre} ahora es socio de la biblioteca.")
         return self.es_socio
 
-    def pide_prestado_libro(self, libro):
-        if libro.estadoDisponible and libro.stock > 0:
-            libro.stock -= 1
-            libro.cambiarEstado(libro.stock > 0)
-            prestamo = Prestamo(self, libro)
-            self.historial_prestamos.append(prestamo)
-            print(f"📚 {self.nombre} ha pedido prestado '{libro.titulo}'.")
-            return True
-        else:
-            print(f"⚠️ El libro '{libro.titulo}' no está disponible.")
-            return False
+    def pedir_prestado_libro(self, libro: str) -> bool:
+        self.historial_prestamos.append(libro)
+        print(f"{self.nombre} ha pedido prestado el libro: {libro}")
+        return True
 
-    def pide_devolver_libro(self, libro):
-        for prestamo in self.historial_prestamos:
-            if prestamo.libro == libro and prestamo.fechaDevolucionReal is None:
-                prestamo.registrarDevolucion()
-                libro.stock += 1
-                libro.cambiarEstado(True)
-                print(f"✅ {self.nombre} devolvió '{libro.titulo}'.")
-                return True
-        print(f"⚠️ No se encontró préstamo activo del libro '{libro.titulo}'.")
-        return False
-
-    def ver_historial_prestamos(self) -> List[Prestamo]:
+    def ver_historial_prestamos(self) -> List:
         return self.historial_prestamos
 
+    def devolver_libro(self, libro: str) -> bool:
+        if libro in self.historial_prestamos:
+            self.historial_prestamos.remove(libro)
+            print(f"{self.nombre} ha devuelto el libro: {libro}")
+            return True
+        else:
+            print(f"Error: {self.nombre} no tiene prestado el libro: {libro}")
+            return False
+
     def __str__(self):
-        tipo = "Socio" if self.es_socio else "Usuario común"
+        tipo = "Socio" if self.es_socio else "Usuario comun"
         return f"{self.nombre} {self.apellido} ({tipo})"
+

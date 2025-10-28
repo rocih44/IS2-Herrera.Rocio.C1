@@ -1,12 +1,11 @@
-from dominio.Prestamo import Prestamo
-
 class Multa:
     def __init__(self, dias_atraso: int, monto_por_dia: int = 500):
         self.dias_atraso = dias_atraso
         self.monto = dias_atraso * monto_por_dia
         self.pagada = False
 
-    def calcular_multa(self, prestamo: Prestamo) -> float:
+    def calcular_multa(self, prestamo):
+        from dominio.Prestamo import Prestamo  # Importación dentro de la función
         dias_atraso = prestamo.verificar_atraso()
         self.monto = dias_atraso * 500
         return self.monto

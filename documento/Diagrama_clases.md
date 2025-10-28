@@ -9,11 +9,6 @@ classDiagram
         + cambiarEstado(estadoDisponible : Boolean) : Boolean
     }
 
-    class Categoria {
-        - nombreTipo : String
-        + buscarPorAutor(autor : String) : List~Libro~libros
-    }
-
     class Usuario {
         - id : Integer
         - nombre : String
@@ -21,9 +16,9 @@ classDiagram
         - email : String
         - es_socio : Boolean
         + registrar_socio() : Boolean
-        + pidePrestadoLibro(libro : Libro) : Boolean
-        + pideDevolverLibro(libro : Libro) : Boolean
+        + pedirPrestadoLibro(libro : Libro) : Boolean
         + verHistorialPrestamos() : List~Prestamo~prestamos
+        + devolverLibro(libro : Libro) : Boolean
     }
 
     class Prestamo {
@@ -42,7 +37,7 @@ classDiagram
         + pagarMulta(monto : Double) : Boolean
     }
 
-    class SistemaBiblioteca {
+    class ServicioBiblioteca {
         + agregarNuevoLibro(libro : Libro)
         + buscarLibrosPorTitulo(titulo : String) : List~Libro~libros
         + registrarPrestamo(usuario : Usuario, libro : Libro)
@@ -59,7 +54,6 @@ classDiagram
     SistemaBiblioteca "1" -- "0..*" Usuario : gestiona
     SistemaBiblioteca "1" -- "0..*" Multa : calcula
     SistemaBiblioteca "1" -- "0..*" Prestamo : coordina
-    Libro "1" -- "1" Categoria : pertenece a
     Usuario "1" -- "0..*" Prestamo : hace
     Prestamo "1" -- "1" Libro : involucra
     Usuario "1" -- "0..*" Multa : puede tener
