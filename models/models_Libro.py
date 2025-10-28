@@ -10,3 +10,4 @@ class Libro(Base):
     genero = Column(String, nullable=True)
     estado_disponible = Column(Boolean, default=True)
     stock = Column(Integer, default=1)
+
