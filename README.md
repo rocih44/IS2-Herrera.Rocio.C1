@@ -39,3 +39,14 @@ Motivos para seleccionar el patrón Observer:
 - Validación del modelo en el lenguaje de programación que usted elija.
 
 ## **Fecha de Entrega:**   Martes 28 de Octubre 
+
+## **Instrucciones:**
+1. pip install -r requirements.txt
+2. python -m db.init_db
+3. python -m db.test_db 
+4. python -m test.test_Usuario
+5. python -m test.test_Libro
+6. python -m test.test_Prestamo
+7. python -m test.test_Multa
+8. python -m test.test_ServicioBiblioteca
+
