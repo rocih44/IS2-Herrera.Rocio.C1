@@ -41,12 +41,16 @@ Motivos para seleccionar el patrón Observer:
 ## **Fecha de Entrega:**   Martes 28 de Octubre 
 
 ## **Instrucciones:**
-1. pip install -r requeriments.txt
-2. python -m db.init_db
-3. python -m db.test_db 
-4. python -m test.test_Usuario
-5. python -m test.test_Libro
-6. python -m test.test_Prestamo
-7. python -m test.test_Multa
-8. python -m test.test_ServicioBiblioteca
+1. cd IS2-Herrera.Rocio.C1
+2. python -m venv .venv
+>> .\.venv\Scripts\Activate.ps1 #Windows
+>> source .venv/bin/activate #Linux
+3. pip install -r requirements.txt
+4. python -m db.init_db
+5. python -m db.test_db 
+6. python -m test.test_Usuario
+7. python -m test.test_Libro
+8. python -m test.test_Prestamo
+9. python -m test.test_Multa
+10. python -m test.test_ServicioBiblioteca
 
