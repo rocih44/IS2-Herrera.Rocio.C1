@@ -7,7 +7,6 @@ from dominio.ServicioBiblioteca import ServicioBiblioteca
 
 
 class TestServicioBiblioteca(unittest.TestCase):
-
     def setUp(self):
         self.sistema = ServicioBiblioteca()
         self.usuario = Usuario("Enzo", "Perez", "enzo11@email.com")
@@ -17,38 +16,31 @@ class TestServicioBiblioteca(unittest.TestCase):
         self.sistema.registrar_usuario(self.usuario)
 
     def test_agregar_nuevo_libro(self):
-        """Test agregar nuevo libro"""
         nuevo_libro = Libro("IT", "Stephen King", "Terror", True, 1)
         self.sistema.agregar_nuevo_libro(nuevo_libro)
         self.assertIn(nuevo_libro, self.sistema.libros)
 
     def test_registrar_usuario(self):
-        """Test registrar nuevo usuario"""
         nuevo_usuario = Usuario("Juan", "Roman", "juan10@email.com")
         nuevo_usuario.registrar_socio()
         self.sistema.registrar_usuario(nuevo_usuario)
         self.assertIn(nuevo_usuario, self.sistema.usuarios)
 
     def test_busqueda_libro_existente(self):
-        """Test búsqueda de un libro que sí existe"""
-        # Buscamos el libro que ya agregamos en setUp
         libros_encontrados = self.sistema.buscar_libros_por_titulo(self.libro.titulo)
         self.assertIn(self.libro, libros_encontrados)
         self.assertEqual(len(libros_encontrados), 1)
 
     def test_busqueda_autor_existente(self):
-        """Test búsqueda de libros por un autor existente"""
         libros_encontrados = self.sistema.buscar_libros_por_autor(self.libro.autor)
         self.assertIn(self.libro, libros_encontrados)
         self.assertEqual(len(libros_encontrados), 1)
 
     def test_busqueda_libro_inexistente(self):
-        """Test búsqueda de libro que no existe"""
         libros = self.sistema.buscar_libros_por_titulo("Libro inexistente")
         self.assertEqual(len(libros), 0)
 
     def test_busqueda_autor_inexistente(self):
-        """Test búsqueda de autor que no existe"""
         libros = self.sistema.buscar_libros_por_autor("Autor inexistente")
         self.assertEqual(len(libros), 0)
 
@@ -72,7 +64,6 @@ class TestServicioBiblioteca(unittest.TestCase):
         self.assertTrue(self.libro.estado_disponible)
 
     def test_prestamo_libro_no_disponible(self):
-        """Test préstamo de libro no disponible"""
         self.libro.stock = 0
         self.libro.estado_disponible = False
         resultado = self.sistema.registrar_prestamo(self.usuario, self.libro)
@@ -83,11 +74,9 @@ class TestServicioBiblioteca(unittest.TestCase):
         self.assertIn(self.libro, disponibles)
 
     def test_notificar_disponibilidad(self):
-            # No falla, solo verifica que el método se ejecute
             self.sistema.notificar_disponibilidad(self.libro)
 
     def test_generar_reporte(self):
-        # Solo verifica ejecución sin errores
         self.sistema.generar_reporte()
 
     def test_cerrar_sesion(self):

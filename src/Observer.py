@@ -1,4 +1,3 @@
-# Importamos la biblioteca para crear interfaces abstractas (opcional, pero útil)
 from abc import ABC, abstractmethod
 
 # Paso 1: Se define la interfaz para el Observador

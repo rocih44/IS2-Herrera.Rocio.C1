@@ -1,5 +1,3 @@
-#Interfaz de Usuario
-
 import sys
 import os
 
@@ -12,8 +10,7 @@ libros = []
 usuarios = []
 prestamos = {}  
 
-
-class Usuario(PerfilUsuario):  # heredamos de PerfilUsuario para mantener notificaciones
+class Usuario(PerfilUsuario):  # tenemos que heredar de PerfilUsuario para mantener notificaciones
     def __init__(self, nombre, email=""):
         super().__init__(nombre)
         self.email = email

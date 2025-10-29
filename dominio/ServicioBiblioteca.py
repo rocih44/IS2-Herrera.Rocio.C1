@@ -26,7 +26,6 @@ class ServicioBiblioteca:
         print(f" Usuario registrado: {usuario.id} {usuario.nombre}")
 
     def registrar_prestamo(self, usuario: Usuario, libro: Libro):
-        """Registra un préstamo si el libro está disponible"""
         if libro.stock > 0:
             libro.stock -= 1
             libro.cambiar_estado(libro.stock > 0)
@@ -43,7 +42,6 @@ class ServicioBiblioteca:
             return False
 
     def registrar_devolucion(self, usuario: Usuario, libro: Libro, prestamo: Prestamo):
-        """Registra la devolución de un libro y actualiza el stock."""
         for p in self.prestamos:
             if p.usuario == usuario and p.libro == libro and p.fecha_devolucion_real is None:
                 prestamo.registrar_devolucion()

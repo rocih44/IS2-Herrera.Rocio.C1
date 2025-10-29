@@ -1,8 +1,6 @@
 # test/test_main_unittest.py
 import unittest
 import UI.main as main
-
-
 class TestBiblioteca(unittest.TestCase):
 
     def setUp(self):
@@ -25,7 +23,6 @@ class TestBiblioteca(unittest.TestCase):
         self.assertEqual(main.usuarios[0].nombre_usuario, "Lucia")
 
     def test_registrar_libro(self):
-        # simula registrar un libro manualmente
         from src.Observer import LibroSujeto
         libro = LibroSujeto("Carrie")
         main.libros.append(libro)
@@ -41,16 +38,14 @@ class TestBiblioteca(unittest.TestCase):
     def test_prestar_y_devolver_libro(self):
         from src.Observer import LibroSujeto
 
-        # Crear usuario socio
         usuario = main.Usuario("Marta")
         usuario.registrar_socio()
         main.usuarios.append(usuario)
 
-        # Crear libro disponible
         libro = LibroSujeto("Cien años de soledad")
         main.libros.append(libro)
 
-        # Prestar el libro
+        # se presta el libro
         libro.cambiar_estado()  # simula préstamo
         usuario.historial_prestamos.append(libro.titulo)
         main.prestamos[usuario.nombre_usuario] = {"libro": libro}
@@ -58,14 +53,13 @@ class TestBiblioteca(unittest.TestCase):
         self.assertFalse(libro.estado)  # ahora debe estar prestado
         self.assertIn(usuario.nombre_usuario, main.prestamos)
 
-        # Devolver el libro
+        # se devuelve el libro
         libro.cambiar_estado()  # vuelve a estar disponible
         del main.prestamos[usuario.nombre_usuario]
         self.assertTrue(libro.estado)
         self.assertNotIn(usuario.nombre_usuario, main.prestamos)
 
     def test_multas_simples(self):
-        # Verifica cálculo de multa sin funciones complejas
         dias_atraso = 3
         multa = dias_atraso * main.MULTA_DIARIA
         self.assertEqual(multa, 1500)

@@ -8,10 +8,8 @@ class Libro:
 
     def cambiar_estado(self, nuevo_estado=None):
         if nuevo_estado is None:
-            # Toggle automático
             self.estado_disponible = not self.estado_disponible
         else:
-            # Asignación explícita
             self.estado_disponible = nuevo_estado
         return self.estado_disponible
 

@@ -3,13 +3,13 @@ from dominio.Usuario import Usuario
 
 class TestUsuario(unittest.TestCase):
     def test_registrar_socio(self):
-        usuario = Usuario("Rocio", "Herrera", "rocio13@gmail.com")
+        usuario = Usuario("Agustina", "Maldonado", "agustina13@gmail.com")
         self.assertFalse(usuario.es_socio)
         usuario.registrar_socio()
         self.assertTrue(usuario.es_socio)
 
     def test_historial_prestamos(self):
-        usuario = Usuario("Rocio", "Herrera", "rocio13@gmail.com")
+        usuario = Usuario("Agustina", "Maldonado", "agustina13@gmail.com")
         usuario.historial_prestamos.append("Libro1")
         self.assertIn("Libro1", usuario.historial_prestamos)
 
