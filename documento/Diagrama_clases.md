@@ -50,10 +50,10 @@ classDiagram
     }
 
     %% Relaciones entre clases
-    SistemaBiblioteca "1" -- "0..*" Libro : gestiona varios
-    SistemaBiblioteca "1" -- "0..*" Usuario : gestiona
-    SistemaBiblioteca "1" -- "0..*" Multa : calcula
-    SistemaBiblioteca "1" -- "0..*" Prestamo : coordina
+    ServicioBiblioteca "1" -- "0..*" Libro : gestiona varios
+    ServicioBiblioteca "1" -- "0..*" Usuario : gestiona
+    ServicioBiblioteca "1" -- "0..*" Multa : calcula
+    ServicioBiblioteca "1" -- "0..*" Prestamo : coordina
     Usuario "1" -- "0..*" Prestamo : hace
     Prestamo "1" -- "1" Libro : involucra
     Usuario "1" -- "0..*" Multa : puede tener

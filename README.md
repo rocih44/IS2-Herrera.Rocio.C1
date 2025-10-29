@@ -1,6 +1,6 @@
-# Trabajo Práctico – Unidad 3: Diseño Arquitectónico
+# 📝 Trabajo Práctico – Unidad 3: Diseño Arquitectónico
 
-## Introducción al Proyecto
+## ⚙️ Introducción al Proyecto
 
 Este documento presenta mi implementación del Trabajo Práctico de Unidad 3, enfocado en el diseño arquitectónico de un sistema de gestión para una biblioteca. El proyecto busca desarrollar un sistema simple que maneje funciones básicas como préstamos, devoluciones, multas y notificaciones, utilizando principios de ingeniería de software. 
 
@@ -41,7 +41,7 @@ Motivos para seleccionar el patrón Observer:
 ## **Fecha de Entrega:**   Martes 28 de Octubre 
 
 ## **Instrucciones:**
-1. pip install -r requirements.txt
+1. pip install -r requeriments.txt
 2. python -m db.init_db
 3. python -m db.test_db 
 4. python -m test.test_Usuario
